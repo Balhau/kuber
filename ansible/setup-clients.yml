@@ -11,3 +11,24 @@
       apt_repository:
         repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
         state: present
+    
+    - name: Update repositories cache and install Kubeadm package
+      apt:
+        name: kubeadm
+        update_cache: yes
+
+    - name: Creates directory for kubernetes utilities
+      file: path=kubernetes state=directory
+
+    - name: Copy configuration script
+      copy:
+        src: scripts/kuber-configs.sh
+        dest: kubernetes/kuber-configs.sh
+        owner: pirate
+        group: pirate
+        mode: 0777
+
+    - name: Execute kubernetes config setup
+      script: kubernetes/kuber-configs.sh
+
+    
