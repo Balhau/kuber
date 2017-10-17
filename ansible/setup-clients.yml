@@ -1,0 +1,6 @@
+- name: Setup Kubernetes Clients
+  hosts: raspcluster
+  become: True
+
+  tasks:
+    - ping:

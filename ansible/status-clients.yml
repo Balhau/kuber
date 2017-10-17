@@ -1,0 +1,6 @@
+- name: Status Kubernetes Cluster
+  hosts: raspcluster
+  become: True
+
+  tasks:
+    - ping:
