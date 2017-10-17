@@ -3,4 +3,6 @@
   become: True
 
   tasks:
-    - ping:
+    - name: Add Kubernetes Apt Key
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
