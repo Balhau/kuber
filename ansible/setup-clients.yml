@@ -18,9 +18,6 @@
         name: kubeadm
         update_cache: yes
 
-    - name: Execute kubernetes config setup on slaves
-      script: scripts/kuber-configs.sh
-
 - name: Setup Kubernetes Slaves
   hosts: clusterslaves
   become: True
@@ -36,5 +33,5 @@
   tasks:
     - block:
       - name: Deploy flannel on master
-        script: scripts/setup-apps.sh
+        script: scripts/setup-master.sh
       ignore_errors: yes 

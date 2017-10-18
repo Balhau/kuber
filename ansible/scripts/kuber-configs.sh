@@ -1,4 +1,4 @@
 sudo rm -rf $HOME/.kube
-sudo mkdir -p $HOME/.kube
+mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
