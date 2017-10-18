@@ -1,3 +1,4 @@
-cp /etc/kubernetes/admin.conf $HOME/
-chown $(id -u):$(id -g) $HOME/admin.conf
-echo "export KUBECONFIG=$HOME/admin.conf" > .bashrc
+sudo rm -rf $HOME/.kube
+sudo mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config

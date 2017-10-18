@@ -1,3 +1,4 @@
+---
 - name: Setup Kubernetes Clients
   hosts: raspcluster
   become: True
@@ -17,18 +18,23 @@
         name: kubeadm
         update_cache: yes
 
-    - name: Creates directory for kubernetes utilities
-      file: path=kubernetes state=directory
+    - name: Execute kubernetes config setup on slaves
+      script: scripts/kuber-configs.sh
 
-    - name: Copy configuration script
-      copy:
-        src: scripts/kuber-configs.sh
-        dest: kubernetes/kuber-configs.sh
-        owner: pirate
-        group: pirate
-        mode: 0777
+- name: Setup Kubernetes Slaves
+  hosts: clusterslaves
+  become: True
 
-    - name: Execute kubernetes config setup
-      script: kubernetes/kuber-configs.sh
+  tasks:
+    - name: Join Cluster
+      script: scripts/kuber-join.sh
 
-    
+- name: Setup Kubernetes Master
+  hosts: clustermaster
+  become: True
+
+  tasks:
+    - block:
+      - name: Deploy flannel on master
+        script: scripts/setup-apps.sh
+      ignore_errors: yes 
