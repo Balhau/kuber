@@ -1,3 +1,6 @@
+- name: Turn off swap
+  command: swapoff -a
+  
 - name: Install NFS Libraries and RSync
   apt:
     name: "{{ item }}"
@@ -47,6 +50,3 @@
   service:
     name: docker
     state: started
-
-- name: Turn off swap
-  command: swapoff -a

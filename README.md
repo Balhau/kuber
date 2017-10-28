@@ -34,9 +34,21 @@ As more and more things were being added I notice that the filesystem used was t
 
 ### The NFS shared folder
 
-To overcome the problem of local overuse of io operations on the sd cards as well as the fact that the total amount of space was relatively small. I decided to use an extra raspberry node to share 5Tb of disk by mounting there a NFS shared folder. 
+To overcome the problem of local overuse of io operations on the sd cards as well as the fact that the total amount of space was relatively small. I decided to use an extra raspberry node to share **5Tb** of disk by mounting there a NFS shared folder. 
 
 ![NFS Shared Folder](http://shared.balhau.net/imgs/kuber/nfsdisk.jpg)
+
+After some reading I notice a nice [article](https://linuxconfig.org/how-to-move-docker-s-default-var-lib-docker-to-another-directory-on-ubuntu-debian-linux) target for debian distributions that explained how we could do the trick of migrating the docker container filesystem into a new folder. This was the base for the [**mountpoints.yml**](ansible/roles/base/tasks/mountpoints.yml) playbook that is responsible for the following:
+
+    * Turn off swap
+    * Install NFS client and RSync utilities
+    * Setup the remote NFS shared folder as a local mountpoint
+    * Set a node root folder on the shared folder
+    * Set docker to use the new shared mountpoint as working folder
+    * Stop docker service
+    * Execute daemon-reload
+    * RSync data from old to new folder
+    * Start docker service
  
  ### More info
 
