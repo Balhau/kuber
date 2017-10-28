@@ -25,6 +25,7 @@ as we can see in the following picture
 The setup of the hardware, OS configuration and Kubernetes installation took me a whole week of iteration over iteration to fine tune the container versions, the ARM troubleshooting of incompatible versions and so on. 
 
 In the end I was able to setup a minimalistic kubernetes cluster. We achieved the following
+
     * Integration with kubernetes dashboard
     * Integration with heapster
     * Integration with grafana and influx database for metrics visualization
@@ -35,7 +36,7 @@ As more and more things were being added I notice that the filesystem used was t
 
 To overcome the problem of local overuse of io operations on the sd cards as well as the fact that the total amount of space was relatively small. I decided to use an extra raspberry node to share 5Tb of disk by mounting there a NFS shared folder. 
 
- 
+
  
  ### More info
 
