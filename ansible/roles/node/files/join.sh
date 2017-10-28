@@ -1,0 +1,1 @@
+kubeadm join --token $1 $2 --discovery-token-unsafe-skip-ca-verification

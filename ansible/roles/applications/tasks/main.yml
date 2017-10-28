@@ -1,0 +1,33 @@
+#Add Flannel
+- name: Install Kubernetes Flannel RBAC
+  shell: curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel-rbac.yml | kubectl create -f -
+- name: Install Flannel
+  shell: curl -sSL https://rawgit.com/coreos/flannel/v0.7.1/Documentation/kube-flannel.yml | sed "s/amd64/arm/g" | kubectl create -f -
+
+#Add traefik
+- name: Install traefik
+  shell: kubectl apply -f https://raw.githubusercontent.com/hypriot/rpi-traefik/master/traefik-k8s-example.yaml
+
+#Install heapster
+- name: Install heapster
+  shell: curl -sSL 'https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
+
+# Install heapster cluster role
+- name: Install heapster cluster role
+  shell: curl -sSL 'https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/rbac/heapster-rbac.yaml' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
+
+#Install influxdb for metrics
+- name: Install influxdb
+  shell: curl -sSL 'https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/influxdb.yaml' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
+
+#Install grafana for metrics
+- name: Install grafana
+  shell: curl -sSL 'https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/grafana.yaml' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
+
+#Install dashboards
+- name: Install Kubernetes Dashboard
+  shell: curl -sSL 'https://raw.githubusercontent.com/kubernetes/dashboard/v1.6.3/src/deploy/kubernetes-dashboard.yaml' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
+
+#Assign node to traefik
+- name: Assign node
+  shell: kubectl label node {{traefik_node}} nginx-controller=traefik

@@ -1,0 +1,15 @@
+- name: Reset Kubernetes installation
+  shell: "kubeadm reset"
+  when: "reset==true"
+
+- name: Disable swap
+  shell: swapoff -a
+
+- name: Adding node to cluster
+  script: files/join.sh {{ token }} {{ master }}
+  register: out
+
+- name: Adding iptables rules
+  shell: iptables -A FORWARD -i cni0 -j ACCEPT; iptables -A FORWARD -o cni0 -j ACCEPT
+
+- debug: var=out.stdout_lines

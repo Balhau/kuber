@@ -1,0 +1,8 @@
+- name: Add CIFS mountpoint
+  mount:
+    name: /media/wd5t
+    src: //192.168.1.170/wd5t
+    #opts: "credentials=/root/smbcred,gid=999,uid=999"
+    fstype: cifs
+    state: mounted
+  become: true # as root

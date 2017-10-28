@@ -1,0 +1,12 @@
+- name: Reset Kubernetes installation
+  shell: "kubeadm reset"
+  when: "reset==true"
+
+- name: Initialize Kubernetes cluster for ARM with flannel support
+  shell: "kubeadm init --token {{ token }} --pod-network-cidr={{cidr}} --apiserver-advertise-address={{advertise_master}}"
+
+- name: Set cluster configuration
+  script: set-configs.sh
+
+
+- debug: var=out.stdout_lines 
