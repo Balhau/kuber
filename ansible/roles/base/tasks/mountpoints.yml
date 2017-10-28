@@ -1,10 +1,11 @@
-- name: Install NFS Libraries
+- name: Install NFS Libraries and RSync
   apt:
     name: "{{ item }}"
     force: yes
     state: present
   with_items:
     - nfs-common
+    - rsync
 
 - name: Add NFS mountpoint
   mount:
@@ -16,10 +17,36 @@
   become: true # as root
 
 - name: Add node root folder to shared montpoint
-  command: "mkdir {{ shared_mountpoint }}/{{ inventory_hostname }}"
+  file:
+    path: "{{ shared_folder }}/{{ inventory_hostname }}"
+    state: directory
+    mode: 0777
+  register: mountpoint
+
 
 - name: Set docker to use the new shared mountpoint as working folder
-  command: cat /lib/systemd/system/docker.service | sed -e 's/.*ExecStart.*/ExecStart=\/usr\/bin\/dockerd\ {{inventory_hostname}}\ -H\ fd:\/\//g' > /lib/systemd/system/docker.service
+  replace:
+    path: /lib/systemd/system/docker.service
+    regexp: '.*ExecStart.*'
+    replace: 'ExecStart=/usr/bin/dockerd {{shared_folder}}/{{inventory_hostname}} -H\ fd://'
+    backup: yes
+  register: mountpoint
+
+- name: Stop docker service
+  service:
+    name: docker
+    state: stopped
+  
+- name: Execute daemon-reload
+  command: systemctl daemon-reload
+
+- name: RSync data from old to new folder
+  command: rsync -aqxP /var/lib/docker/ {{shared_folder}}/{{inventory_hostname}}/
+
+- name: Start docker service
+  service:
+    name: docker
+    state: started
 
 - name: Turn off swap
   command: swapoff -a
