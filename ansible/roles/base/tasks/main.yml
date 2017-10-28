@@ -1,6 +1,6 @@
 ---
-- name: Add and update packages
-  include: apt.yml
+#- name: Add and update packages
+#  include: apt.yml
 
 # Currently swap is not supported
 #- name: Add Swapfile
@@ -9,15 +9,15 @@
 #    swap_file_path: "/swapfile"
 #    swap_file_size: "1G"
 
-- name: Setup system parameters (boot, hosts, timzone)
-  include: system.yml
+#- name: Setup system parameters (boot, hosts, timzone)
+#  include: system.yml
 
 #- name: Configure Wifi
 #  include: wifi.yml
 #  when: wifi is defined
 
-- name: Setup user
-  include: user.yml
+#- name: Setup user
+#  include: user.yml
 
 - name: Setup mountpoints
-  include: mountpoints.yml
+  import_tasks: mountpoints.yml

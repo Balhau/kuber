@@ -13,6 +13,10 @@ The reason for Raspberry as the bare metal solution is pretty obvious. Its **che
 
 Kubernetes is a well suported toolkit to manage the lifecycle of container applications and give us a very interesting set of features to deploy, update and scale our containers. Since it was developed by google has a very active developer community, so that's pretty much it.
 
+### The setup
+
+
+
  
  ### More info
 

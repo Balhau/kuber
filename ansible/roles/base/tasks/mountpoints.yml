@@ -1,8 +1,25 @@
-- name: Add CIFS mountpoint
+- name: Install NFS Libraries
+  apt:
+    name: "{{ item }}"
+    force: yes
+    state: present
+  with_items:
+    - nfs-common
+
+- name: Add NFS mountpoint
   mount:
     name: /media/wd5t
-    src: //192.168.1.170/wd5t
-    #opts: "credentials=/root/smbcred,gid=999,uid=999"
-    fstype: cifs
+    src: 192.168.1.170:/media/wd
+    opts: "rw,hard,intr"
+    fstype: nfs
     state: mounted
   become: true # as root
+
+- name: Add node root folder to shared montpoint
+  command: "mkdir {{ shared_mountpoint }}/{{ inventory_hostname }}"
+
+- name: Set docker to use the new shared mountpoint as working folder
+  command: cat /lib/systemd/system/docker.service | sed -e 's/.*ExecStart.*/ExecStart=\/usr\/bin\/dockerd\ {{inventory_hostname}}\ -H\ fd:\/\//g' > /lib/systemd/system/docker.service
+
+- name: Turn off swap
+  command: swapoff -a
