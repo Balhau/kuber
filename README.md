@@ -20,7 +20,7 @@ First and foremost let me say this a working in progress. Now we are clarified l
 So, the initial idea consisted in deploying a kubernetes cluster running on a set of 5 Raspberry Pi model 3
 as we can see in the following picture
 
-![Raspberry Cluster](http://shared.balhau.net/imgs/kuber/IMG_20171028_135826.jpg)
+![Raspberry Cluster](http://shared.balhau.net/imgs/kuber/kluster.jpg)
 
 The setup of the hardware, OS configuration and Kubernetes installation took me a whole week of iteration over iteration to fine tune the container versions, the ARM troubleshooting of incompatible versions and so on. 
 
@@ -36,7 +36,7 @@ As more and more things were being added I notice that the filesystem used was t
 
 To overcome the problem of local overuse of io operations on the sd cards as well as the fact that the total amount of space was relatively small. I decided to use an extra raspberry node to share 5Tb of disk by mounting there a NFS shared folder. 
 
-
+![NFS Shared Folder](http://shared.balhau.net/imgs/kuber/nfsdisk.jpg)
  
  ### More info
 
