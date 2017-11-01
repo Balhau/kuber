@@ -1,11 +1,11 @@
-- name: Kubernetes master configuration
+- name: Kubernetes post setup configurations
   hosts: master
   gather_facts: yes
   remote_user: pi
-  become: true
+  become: true  
   vars_files:
     - config.yml
-
+  
   roles:
   - presteps
-  - master
+  - applications

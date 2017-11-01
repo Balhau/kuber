@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: pycrawler-scanner
+  namespace: balhau-dev
+  labels:
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    version: v1
+  template:
+    metadata:
+      labels:
+        version: v1
+    spec:
+      containers:
+      - name: pycrawler-scanner
+        image: 10.108.252.69:5000/balhau/pycrawler:v1
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi

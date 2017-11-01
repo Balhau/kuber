@@ -50,6 +50,27 @@ After some reading I notice a nice [article](https://linuxconfig.org/how-to-move
     * RSync data from old to new folder
     * Start docker service
  
+
+ ### Private Docker Registry
+
+ To install a private docker registry you just need to follow [these instructions](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/registry)
+
+[Here we adapted](kuber/kuber/registry) the kuberfiles to enable a local volume using a NFS shared mountpoint.
+
+Build and push image into registry
+
+    docker build -t image-name:tag-name .
+    docker tag image-name:tag-name localhost:5000/image-name:tag-name
+    docker push localhost:5000/image-name:tag-name
+
+To get image information on the registry you can query the following endpoint
+
+    curl -X GET http://localhost:5000/v2/_catalog
+
+For instance in our current setup we end up with the following output
+
+    {"repositories":["balhau/pycrawler","kube-api","pycrawler"]}
+
  ### More info
 
  The lab here was developed with the help of several interesting resources, namely

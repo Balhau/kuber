@@ -7,5 +7,7 @@ shared_folder: /media/wd5t
 shared_folder_pattern: \/media\/wd5t
 master: 192.168.0.15:6443
 advertise_master: 0.0.0.0
+docker_registry: 10.108.252.69:5000
 cidr: 10.244.0.0/16
 reset: true
+nocows: 0

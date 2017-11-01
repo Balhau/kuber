@@ -8,4 +8,5 @@
     - config.yml
 
   roles:
-    - base
+    - presteps
+    #- base

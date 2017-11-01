@@ -1,3 +1,4 @@
+
 - name: Reset Kubernetes installation
   shell: "kubeadm reset"
   when: "reset==true"

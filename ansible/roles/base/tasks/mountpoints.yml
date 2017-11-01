@@ -1,6 +1,3 @@
-- name: Turn off swap
-  command: swapoff -a
-  
 - name: Install NFS Libraries and RSync
   apt:
     name: "{{ item }}"
@@ -26,27 +23,18 @@
     mode: 0777
   register: mountpoint
 
+- name: Stop docker service
+  service:
+    name: docker
+    state: stopped
 
 - name: Set docker to use the new shared mountpoint as working folder
   replace:
     path: /lib/systemd/system/docker.service
     regexp: '.*ExecStart.*'
-    replace: 'ExecStart=/usr/bin/dockerd {{shared_folder}}/{{inventory_hostname}} -H\ fd://'
+    replace: 'ExecStart=/usr/bin/dockerd -H fd:// --insecure-registry {{docker_registry}}'
     backup: yes
   register: mountpoint
-
-- name: Stop docker service
-  service:
-    name: docker
-    state: stopped
   
-- name: Execute daemon-reload
-  command: systemctl daemon-reload
-
-- name: RSync data from old to new folder
-  command: rsync -aqxP /var/lib/docker/ {{shared_folder}}/{{inventory_hostname}}/
-
-- name: Start docker service
-  service:
-    name: docker
-    state: started
+- name: Reboot system
+  command: reboot
