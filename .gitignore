@@ -1,1 +1,3 @@
 *.retry
+.oh-my-zsh
+.zshrc

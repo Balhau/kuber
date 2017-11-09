@@ -13,7 +13,7 @@ The reason for Raspberry as the bare metal solution is pretty obvious. Its **che
 
 Kubernetes is a well suported toolkit to manage the lifecycle of container applications and give us a very interesting set of features to deploy, update and scale our containers. Since it was developed by google has a very active developer community, so that's pretty much it.
 
-### The setup
+## The setup
 
 ### The first version
 First and foremost let me say this a working in progress. Now we are clarified lets put all this in context.
@@ -32,7 +32,7 @@ In the end I was able to setup a minimalistic kubernetes cluster. We achieved th
 
 As more and more things were being added I notice that the filesystem used was the ext4 mounted partition of the local sd cards on the raspberry nodes. While not a short term problem I noticed that this will consume cycles of life from these cards and on the other side the amount of GB available were not so much.
 
-### The NFS shared folder
+### The ideal NFS shared folder
 
 To overcome the problem of local overuse of io operations on the sd cards as well as the fact that the total amount of space was relatively small. I decided to use an extra raspberry node to share **5Tb** of disk by mounting there a NFS shared folder. 
 
@@ -50,6 +50,12 @@ After some reading I notice a nice [article](https://linuxconfig.org/how-to-move
     * RSync data from old to new folder
     * Start docker service
  
+ ### The reality 
+ This was a very promising idea however after some trying to start docker daemon we noticed that the overlay2 filesystem was not correcting mounting the containers when NFS was used as the backing filesystem. After some reading we end up with the sad news that [overlay backing file system list didn't include NFS](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#prerequisites).
+
+ So instead of completely discard the NFS solution as a way of scaling the storage space and as a pratical way to overcome the fact that raspberry pies have a limited number of write flash operations we start looking for other ways to solve the issue. One way was already embeded in the kubernetes arquitectures [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+
+
 
  ### Private Docker Registry
 

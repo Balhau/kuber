@@ -1,5 +1,5 @@
 - name: Setup Raspberry Pi Base system
-  hosts: pis
+  hosts: newslave
   gather_facts: yes
   remote_user: pirate
   become: true
@@ -9,4 +9,4 @@
 
   roles:
     - presteps
-    #- base
+    - base

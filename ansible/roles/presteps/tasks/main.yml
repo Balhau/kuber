@@ -3,3 +3,6 @@
 
 - name: Adding iptables rules
   shell: iptables -A FORWARD -i cni0 -j ACCEPT; iptables -A FORWARD -o cni0 -j ACCEPT
+
+- name: System daemon reload
+  shell: systemctl daemon-reload

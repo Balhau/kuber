@@ -1,9 +1,10 @@
 [pis]
-rasp5 name=rasp5 ansible_ssh_host=192.168.0.15
-rasp4 name=rasp4 ansible_ssh_host=192.168.0.14
-rasp3 name=rasp3 ansible_ssh_host=192.168.0.13
-rasp2 name=rasp2 ansible_ssh_host=192.168.0.12
-rasp1 name=rasp1 ansible_ssh_host=192.168.0.11
+rasp6 name=rasp6 ansible_ssh_host=192.168.1.16
+rasp5 name=rasp5 ansible_ssh_host=192.168.1.15
+rasp4 name=rasp4 ansible_ssh_host=192.168.1.14
+rasp3 name=rasp3 ansible_ssh_host=192.168.1.13
+rasp2 name=rasp2 ansible_ssh_host=192.168.1.12
+rasp1 name=rasp1 ansible_ssh_host=192.168.1.11
 
 [master]
 rasp5
@@ -13,3 +14,6 @@ rasp1
 rasp2
 rasp3
 rasp4
+
+[newslave]
+rasp6

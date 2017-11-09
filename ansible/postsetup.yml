@@ -1,5 +1,5 @@
 - name: Kubernetes post setup configurations
-  hosts: master
+  hosts: pis
   gather_facts: yes
   remote_user: pi
   become: true  
@@ -8,4 +8,4 @@
   
   roles:
   - presteps
-  - applications
+  #- applications
