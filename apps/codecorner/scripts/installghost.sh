@@ -1,3 +1,3 @@
 cd /opt/ghost 
-ghost install local
+npm install --production
 touch /opt/ghost/install.lock
