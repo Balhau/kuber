@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  namespace: balhau-dev
+  labels:
+    purpose: demonstrate-command
+
+spec:
+  containers:
+  - name: command-demo-container
+    image: byrnedo/alpine-curl
+    command: ["curl 192.168.1.68:80"]
+    args: ["HOSTNAME", "KUBERNETES_PORT"]
+  restartPolicy: OnFailure

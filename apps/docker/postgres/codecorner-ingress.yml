@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     ingress.kubernetes.io/rewrite-target: /
-  name: codecorner-blog
+  name: codecorner
   namespace: balhau-dev
 spec:
   rules:
@@ -12,5 +12,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: codecorner-blog
+          serviceName: codecorner
           servicePort: 5000

@@ -1,5 +1,5 @@
 - name: Kubernetes nodes configuration
-  hosts: newslave
+  hosts: nodes
   gather_facts: yes
   remote_user: pi
   become: true  
