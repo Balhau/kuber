@@ -1,9 +1,10 @@
 HOST = 10.108.252.69:5000
 NS = balhau
+APP = codecorner
 ARCH = armv6
 VERSION ?= 0.0.0
 
-ARTIFACT=$(HOST)/$(NS):$(ARCH)-$(VERSION)
+ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
 
 .PHONY: build push shell run start stop rm release
 

@@ -4,7 +4,7 @@ metadata:
   name: codecorner-blog
   namespace: balhau-dev
   labels:
-    version: v18
+    version: 0.0.1
     app: codecorner
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: codecorner
-        image: 10.108.252.69:5000/balhau/codecorner:v21
+        image: 10.108.252.69:5000/balhau/codecorner:armv6-0.0.1
         volumeMounts:
         - name: codecorner-store
           mountPath: /opt/ghost
