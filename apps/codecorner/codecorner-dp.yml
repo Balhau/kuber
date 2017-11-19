@@ -23,7 +23,7 @@ spec:
         - name: codecorner-store
           mountPath: /opt/ghost
         ports:
-        - containerPort: 5000
+        - containerPort: 2368
           name: registry
           protocol: TCP
       volumes:

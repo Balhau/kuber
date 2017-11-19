@@ -6,7 +6,7 @@
 
 #Add traefik
 - name: Install traefik
-  shell: kubectl apply -f https://raw.githubusercontent.com/hypriot/rpi-traefik/master/traefik-k8s-example.yaml
+  shell: kubectl apply -f https://raw.githubusercontent.com/containous/traefik/bc6f764a87aaabd788f97e03d7de1a6fb7b0bfd3/examples/k8s/traefik-with-rbac.yaml
 
 #Install heapster
 - name: Install heapster

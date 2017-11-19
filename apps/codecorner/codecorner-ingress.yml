@@ -1,16 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    ingress.kubernetes.io/rewrite-target: /
-  name: codecorner-blog
+  name: codecorner-blog-ingress
   namespace: balhau-dev
 spec:
+  tls:
+  - hosts:
+    - codecorner.blog
   rules:
   - host: codecorner.blog
-  - http:
+    http:
       paths:
       - path: /
         backend:
           serviceName: codecorner-blog
-          servicePort: 5000
+          servicePort: 2368
+          
