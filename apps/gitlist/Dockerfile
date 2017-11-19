@@ -11,18 +11,18 @@ RUN apk update && \
 
 
 ADD scripts /opt/scripts/pre-exec.d
-RUN chmod +x /opt/scripts/pre-exec.d/gitlist.sh; chmod +x /opt/scripts/pre-exec.d/gitlist-install.sh
+RUN chmod +x /opt/scripts/pre-exec.d/gitlist.sh
 
 # Set Workdir
-WORKDIR /www
+WORKDIR /app
 
 # Expose volumes
-VOLUME ["/www"]
+VOLUME ["/app"]
 
 # Expose ports
-EXPOSE 9000
+EXPOSE 80
 
 # Entry point
 #CMD ["/usr/bin/php", "-a"]
 
-ENTRYPOINT /opt/scripts/gitlist.sh
+ENTRYPOINT /opt/scripts/run.sh
