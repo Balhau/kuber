@@ -6,13 +6,12 @@ metadata:
 spec:
   tls:
   - hosts:
-    - codecorner.blog
+    - codecorner.balhau.net
   rules:
-  - host: codecorner.blog
+  - host: codecorner.balhau.net
     http:
       paths:
       - path: /
         backend:
           serviceName: codecorner-blog
           servicePort: 2368
-          
