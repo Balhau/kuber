@@ -30,11 +30,11 @@ RUN	apk update && \
 		php5-zip \
 		php5-mysql \
 		php5-sqlite3 \
-		php5-apcu \
+		#php5-apcu \
 		php5-pdo_pgsql \
 		php5-bcmath \
 		php5-gd \
-		php5-xcache \
+		#php5-xcache \
 		php5-odbc \
 		php5-pdo_mysql \
 		php5-pdo_sqlite \
@@ -42,26 +42,24 @@ RUN	apk update && \
 		php5-xmlreader \
 		php5-xmlrpc \
 		php5-bz2 \
-		php5-memcache \
+		#php5-memcache \
 		php5-mssql \
 		php5-iconv \
 		php5-pdo_dblib \
 		php5-curl \
 		php5-ctype \
-		php5-fpm && \
+		php5-phar \
+		php5-cli && \
     
     # Set environments
-	sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /etc/php5/php-fpm.conf && \
-	sed -i "s|;*listen\s*=\s*127.0.0.1:9000|listen = 9000|g" /etc/php5/php-fpm.conf && \
-	sed -i "s|;*listen\s*=\s*/||g" /etc/php5/php-fpm.conf && \
 	sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php5/php.ini && \
 	sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php5/php.ini && \
     sed -i "s|;*upload_max_filesize =.*|upload_max_filesize = ${MAX_UPLOAD}|i" /etc/php5/php.ini && \
     sed -i "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" /etc/php5/php.ini && \
     sed -i "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php5/php.ini && \
     sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" /etc/php5/php.ini && \
-    
-    # Cleaning up
+	
+	# Cleaning up
 	mkdir /www && \
 	apk del tzdata && \
 	rm -rf /var/cache/apk/*
@@ -76,4 +74,4 @@ VOLUME ["/www"]
 EXPOSE 9000
 
 # Entry point
-ENTRYPOINT ["/usr/bin/php-fpm"]
+CMD ["/usr/bin/php", "-a"]
