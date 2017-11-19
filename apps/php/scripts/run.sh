@@ -10,6 +10,8 @@ do
 	fi
 done
 
+tail -F /var/log/apache2/*log &
+
 # set apache as owner/group
 if [ "$FIX_OWNERSHIP" != "" ]; then
 	chown -R apache:apache /app
@@ -29,7 +31,4 @@ done
 echo "[i] Starting daemon..."
 # run apache httpd daemon
 httpd -D FOREGROUND
-#httpd -D 
-
-# display logs
-tail -F /var/log/apache2/*log
+#httpd -d /app 

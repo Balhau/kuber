@@ -5,18 +5,20 @@ LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" versi
 # Maintainer
 MAINTAINER Balhau <balhau@balhau.net>
 
-RUN apk --update add  php5-apache2 curl php5-cli php5-json php5-phar php5-openssl && rm -f /var/cache/apk/* && \
+RUN apk --update add  php5-ctype php5-apache2 curl php5-cli php5-json php5-phar php5-openssl && rm -f /var/cache/apk/* && \
 curl -sS https://getcomposer.org/installer | php5 -- --install-dir=/usr/local/bin --filename=composer && \
 mkdir /app && chown -R apache:apache /app && \
 sed -i 's#^DocumentRoot ".*#DocumentRoot "/app"#g' /etc/apache2/httpd.conf && \
-sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
+sed -i 's#AllowOverride none#AllowOverride All#g' /etc/apache2/httpd.conf && \
+sed -i 's/#LoadModule rewrite_module/LoadModule rewrite_module/g' /etc/apache2/httpd.conf && \ 
 echo "Success"
 
 RUN mkdir /opt
 ADD scripts /opt/scripts
 RUN mkdir /opt/scripts/pre-exec.d && \
 mkdir /opt/scripts/pre-init.d && \
-chmod -R 755 /opt/scripts
+chmod -R 755 /opt/scripts && \
+mkdir /run/apache2
 
 EXPOSE 80
 
