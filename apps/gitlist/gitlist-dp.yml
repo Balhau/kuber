@@ -19,6 +19,11 @@ spec:
       containers:
       - name: gitlist
         image: 10.108.252.69:5000/balhau/gitlist:armv6-0.0.9
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "800m"
+
         volumeMounts:
         - name: gitlist-app-store
           mountPath: /app
