@@ -1,5 +1,6 @@
 #!/bin/sh
 chown -R postgres "$PGDATA"
+chown -R postgres /run/postgresql/
 
 if [ -z "$(ls -A "$PGDATA")" ]; then
     gosu postgres initdb
@@ -57,6 +58,5 @@ if [ -z "$(ls -A "$PGDATA")" ]; then
 
     { echo; echo "host all all 0.0.0.0/0 $authMethod"; } >> "$PGDATA"/pg_hba.conf
 fi
-exec "$@"
-#exec gosu postgres "$@"
-gosu postgres postgres
+
+exec gosu postgres "$@"

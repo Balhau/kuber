@@ -19,6 +19,11 @@ spec:
       containers:
       - name: codecorner
         image: 10.108.252.69:5000/balhau/codecorner:armv6-0.0.1
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "800m"
+            
         volumeMounts:
         - name: codecorner-store
           mountPath: /opt/ghost
