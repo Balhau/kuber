@@ -1,20 +1,25 @@
-FROM arm32v6/alpine
+FROM arm32v7/debian
 
 LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="1.0.0"
 
 # Maintainer
 MAINTAINER Balhau <balhau@balhau.net>
 
-RUN apk --update add curl
+RUN apt-get update && apt-get upgrade -y
+
+RUN apt-get install -y curl build-essential git
 
 # Install rust
-RUN curl https://sh.rustup.rs -sSf | sh
+RUN curl --insecure https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y
 
 # Setup nightly builds
+ENV HOME /root
+ENV PATH $HOME/.cargo/bin:$PATH
+
 RUN rustup default nightly && rustup override set nightly
 
 # Update Rust and Cargo
-RUN rustup update && cargo update
+RUN rustup update
 
 # Entry point
-CMD "/usr/bin/ash"
+CMD "/usr/bin/bash"

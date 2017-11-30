@@ -1,7 +1,7 @@
 HOST = 10.108.252.69:5000
 NS = balhau
 APP = rust
-ARCH = armv6
+ARCH = arm32v7
 VERSION ?= 0.0.1
 
 ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
@@ -14,6 +14,6 @@ build:
 push:
 	docker push $(ARTIFACT)
 run: 
-	docker run -it --rm $(ARTIFACT) ash
+	docker run -it --rm $(ARTIFACT) bash
 
 default: build
