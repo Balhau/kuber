@@ -1,7 +1,7 @@
 - name: Update HypriotOS and Kubernetes components
   hosts: pis
   gather_facts: yes
-  remote_user: pi
+  remote_user: pirate
   become: true
   become_method: sudo
   vars_files:
