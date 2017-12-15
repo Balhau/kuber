@@ -5,7 +5,7 @@ LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" versi
 RUN cd /opt; git clone https://github.com/Balhau/balhauapi.git
 
 ADD start-service.sh /opt/start-service.sh
-RUN chmod +x start-service.sh
+RUN chmod +x /opt/start-service.sh
 
 # Entry point
-CMD "/usr/bin/bash"
+CMD "/opt/start-service.sh"
