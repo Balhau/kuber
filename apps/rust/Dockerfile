@@ -1,6 +1,6 @@
 FROM arm32v7/debian
 
-LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="1.0.0"
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="0.0.2"
 
 # Maintainer
 MAINTAINER Balhau <balhau@balhau.net>
@@ -8,6 +8,8 @@ MAINTAINER Balhau <balhau@balhau.net>
 RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y curl build-essential git
+
+RUN touch /opt/rust_nigthtly_0.0.2
 
 # Install rust
 RUN curl --insecure https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y
