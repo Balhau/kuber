@@ -9,7 +9,6 @@ RUN apk update && apk upgrade && \
 
 RUN  update-ca-certificates
 
-
 RUN npm install -g sqlite3
 RUN npm install -g knex-migrator
 RUN mkdir /opt
