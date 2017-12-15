@@ -14,6 +14,6 @@ build:
 push:
 	docker push $(ARTIFACT)
 run: 
-	docker run -it --rm $(ARTIFACT) ash
+	docker run -it -p 5432:5432 --rm $(ARTIFACT) ash
 
 default: build

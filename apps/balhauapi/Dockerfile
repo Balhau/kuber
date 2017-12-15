@@ -4,7 +4,8 @@ LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" versi
 
 RUN cd /opt; git clone https://github.com/Balhau/balhauapi.git
 
-RUN cd /opt/balhauapi/balhauapi; cargo update; cargo build --release;
+RUN apt-get update; apt-get -y upgrade; apt-get install -y libpq-dev
+RUN cd /opt/balhauapi/balhauapi; cargo build --release;
 
 ADD start-service.sh /opt/start-service.sh
 RUN chmod +x /opt/start-service.sh

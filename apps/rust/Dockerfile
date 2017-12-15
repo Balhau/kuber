@@ -22,7 +22,6 @@ RUN rustup default nightly && rustup override set nightly
 
 # Update Rust and Cargo
 RUN rustup update
-RUN cargo update
 
 # Entry point
 CMD "/usr/bin/bash"
