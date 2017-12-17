@@ -1,4 +1,3 @@
 cd /opt/balhauapi/balhauapi
 git pull;
-cargo build --release; 
-cargo run
+cargo run --bin webserver
