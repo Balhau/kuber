@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: balhauapi-ingress
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - balhauapi.balhau.net
+  rules:
+  - host: balhauapi.balhau.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: balhauapi
+          servicePort: 8000
