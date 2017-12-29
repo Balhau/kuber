@@ -2,9 +2,9 @@ HOST = 10.108.252.69:5000
 NS = balhau
 APP = balhauapi
 ARCH = arm32v7
-VERSION ?= 0.0.10
+VERSION ?= 0.0.12
 ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
-
+z
 .PHONY: build push shell run start stop rm release
 
 

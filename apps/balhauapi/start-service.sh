@@ -1,1 +1,1 @@
-/opt/webserver
+/opt/bin/webserver
