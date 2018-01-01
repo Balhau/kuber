@@ -1,15 +1,14 @@
-FROM arm32v7/debian
+FROM 10.108.252.69:5000/balhau/confd:arm32v6-0.0.1
 
 LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.0.2"
 
 # Maintainer
 MAINTAINER Balhau <balhau@balhau.net>
 
-RUN apt-get update && apt-get upgrade -y
+RUN apk update && apk upgrade && \
+    apk add --no-cache curl gcc make libc-dev python g++
 
-RUN apt-get install -y curl build-essential git
-
-RUN touch /opt/rust_nigthtly_0.0.2
+RUN mkdir /opt; touch /opt/rust_nigthtly_0.0.2
 
 # Install rust
 RUN curl --insecure https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y
