@@ -12,7 +12,10 @@ RUN cd /opt/balhauapi/balhauapi; rustup install nightly-2017-12-21 && rustup ove
 ADD start-service.sh /opt/start-service.sh
 RUN chmod +x /opt/start-service.sh
 
+# Runtime variables needed
 ENV ROCKET_ADDRESS 0.0.0.0
+ENV DATABASE_URL postgres://postgres:postgres@192.168.1.14/postgres
+ENV CONFIG_FILE_ENV=/opt/config.yml
 
 # Entry point
 CMD "/opt/start-service.sh"
