@@ -5,22 +5,21 @@ LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" versi
 # Maintainer
 MAINTAINER Balhau <balhau@balhau.net>
 
+
 RUN apk update && apk upgrade && \
-    apk add --no-cache curl gcc make libc-dev python g++
+    apk add --no-cache bash file sudo curl libc6-compat libc-dev gcc make python g++
 
-RUN mkdir /opt; touch /opt/rust_nigthtly_0.0.2
-
-# Install rust
-RUN curl --insecure https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y
+#--default-toolchain nightly -y
+RUN bash; curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- -y
 
 # Setup nightly builds
 ENV HOME /root
 ENV PATH $HOME/.cargo/bin:$PATH
 
-RUN rustup default nightly && rustup override set nightly
+#RUN rustup default nightly && rustup override set nightly
 
 # Update Rust and Cargo
-RUN rustup update
+#RUN rustup update
 
 # Entry point
-CMD "/usr/bin/bash"
+CMD "/usr/bin/ash"

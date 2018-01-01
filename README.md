@@ -61,7 +61,7 @@ After some reading I notice a nice [article](https://linuxconfig.org/how-to-move
 
  To install a private docker registry you just need to follow [these instructions](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/registry)
 
-[Here we adapted](kuber/kuber/registry) the kuberfiles to enable a local volume using a NFS shared mountpoint.
+[Here we adapted](https://github.com/Balhau/kuber/tree/master/apps/registry) the kuberfiles to enable a local volume using a NFS shared mountpoint.
 
 Build and push image into registry
 
