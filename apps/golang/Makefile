@@ -1,6 +1,6 @@
 HOST = 10.108.252.69:5000
 NS = balhau
-APP = confd
+APP = golang
 ARCH = arm32v6
 VERSION ?= 0.0.1
 
