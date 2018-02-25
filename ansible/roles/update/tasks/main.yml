@@ -1,15 +1,31 @@
-- name: Update APT package
-  command: apt-get update
+#- name: Update APT package
+#  command: apt-get update
 
-- name: Upgrade APT package
-  command: apt-get upgrade -y
+#- name: Upgrade APT package
+#  command: apt-get upgrade -y
 
-- name: Reboot
-  shell: sleep 2 && reboot
-  async: 1
-  poll: 0
-  ignore_errors: true
+#- name: Add NFS mountpoint
+#  mount:
+#    name: /media/wd5t
+#    src: 192.168.1.170:/media/wd
+#    opts: "rw,hard,intr"
+#    fstype: nfs
+#    state: mounted
+#  become: true # as root
 
-- name: Waiting for servers
-  local_action: wait_for host={{ inventory_hostname }} state=started delay=10 timeout=60
-  sudo: no
+- name: Mount BalhauWD samba share
+  mount: 
+    fstype: cifs
+    src: //192.168.1.100/BalhauWD
+    opts: "rw,guest"
+    name: /media/balhauwd
+    state: mounted
+
+  become: true
+
+
+#- name: Reboot
+#  shell: sleep 2 && reboot
+#  async: 1
+#  poll: 0
+#  ignore_errors: true

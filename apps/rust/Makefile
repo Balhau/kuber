@@ -2,7 +2,7 @@ HOST = 10.108.252.69:5000
 NS = balhau
 APP = rust
 ARCH = arm32v7
-VERSION ?= 0.0.2
+VERSION ?= 0.0.8
 
 ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
 
