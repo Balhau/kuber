@@ -25,7 +25,7 @@ spec:
             cpu: "800m"
             
         ports:
-        - containerPort: 8000
+        - containerPort: 5000
           name: balhauapi
           protocol: TCP
         volumeMounts:
