@@ -1,0 +1,20 @@
+---
+configs:
+  remotes:
+      - name: pi1
+        host: 192.168.1.169:122
+        user: pi
+        pass: gamma-007
+  webserver:
+    binding_host: 0.0.0.0
+    port: 5000
+    log: false
+    env: prod
+  database:
+    hostname: 192.168.1.14
+    schema: postgres
+    port: 5432
+    user: postgres
+    pass: postgres
+  folders:
+    mediafolder: /media/balhauwd/download
