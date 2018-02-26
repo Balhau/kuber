@@ -1,17 +1,17 @@
-#- name: Update APT package
-#  command: apt-get update
+- name: Update APT package
+  command: apt-get update
 
-#- name: Upgrade APT package
-#  command: apt-get upgrade -y
+- name: Upgrade APT package
+  command: apt-get upgrade -y
 
-#- name: Add NFS mountpoint
-#  mount:
-#    name: /media/wd5t
-#    src: 192.168.1.170:/media/wd
-#    opts: "rw,hard,intr"
-#    fstype: nfs
-#    state: mounted
-#  become: true # as root
+- name: Add NFS mountpoint
+  mount:
+    name: /media/wd5t
+    src: 192.168.1.170:/media/wd
+    opts: "rw,hard,intr"
+    fstype: nfs
+    state: mounted
+  become: true # as root
 
 - name: Mount BalhauWD samba share
   mount: 
@@ -24,8 +24,8 @@
   become: true
 
 
-#- name: Reboot
-#  shell: sleep 2 && reboot
-#  async: 1
-#  poll: 0
-#  ignore_errors: true
+- name: Reboot
+  shell: sleep 2 && reboot
+  async: 1
+  poll: 0
+  ignore_errors: true
