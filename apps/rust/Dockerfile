@@ -1,6 +1,6 @@
 FROM arm32v7/debian
 
-LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.1.0"
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.1.2"
 
 # Maintainer
 MAINTAINER Balhau <balhau@balhau.net>
