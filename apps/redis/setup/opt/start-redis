@@ -1,0 +1,2 @@
+#!/bin/ash
+/redis-stable/src/redis-server /etc/redis.conf
