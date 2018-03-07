@@ -83,3 +83,10 @@ For instance in our current setup we end up with the following output
 
 * [Kubeadm Workshop](https://github.com/luxas/kubeadm-workshop)
 * [HypriotOS](https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/) 
+
+#### Blog posts
+
+The code in this repository has several blog posts helping the rationale behind
+
+* [Kubernets and PIs](https://codecorner.balhau.net/kubernets-and-raspberry-pis/) - Where kubernets is put under historical perspective and the raspberry pi as the selected arquitecture for the cluster is justified
+* [Provisioning PIs with Ansible](https://codecorner.balhau.net/provisioning-pis-with-ansible/) - A first technical overview about the process of provisioning automation done in ansible to setup the raspberry pi kubernets cluster

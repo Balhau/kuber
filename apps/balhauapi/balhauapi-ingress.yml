@@ -14,4 +14,4 @@ spec:
       - path: /
         backend:
           serviceName: balhauapi
-          servicePort: 8000
+          servicePort: 5000

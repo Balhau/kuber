@@ -11,10 +11,10 @@ configs:
     log: false
     env: prod
   database:
-    hostname: 192.168.1.14
-    schema: postgres
+    hostname: 10.100.70.141
+    schema: balhauapi
     port: 5432
     user: postgres
     pass: postgres
   folders:
-    mediafolder: /media/balhauwd/download
+    mediafolder: /opt/media/balhauwd/download

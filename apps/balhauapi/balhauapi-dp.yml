@@ -4,7 +4,7 @@ metadata:
   name: balhauapi
   namespace: balhau-dev
   labels:
-    version: 0.0.21
+    version: 0.0.28
     app: balhauapi
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: balhauapi
-        image: 10.108.252.69:5000/balhau/balhauapi:arm32v7-0.0.21
+        image: 10.108.252.69:5000/balhau/balhauapi:arm32v7-0.0.28
         resources:
           requests:
             memory: "128Mi"
@@ -26,11 +26,11 @@ spec:
             
         ports:
         - containerPort: 5000
-          name: balhauapi
+          name: registry
           protocol: TCP
         volumeMounts:
         - name: balhauapi-store
-          mountPath: /opt/media
+          mountPath: /opt/media/balhauwd/download
 
       volumes:
       - name: balhauapi-store
