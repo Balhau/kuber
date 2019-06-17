@@ -1,6 +1,6 @@
-FROM 10.108.252.69:5000/balhau/rust:arm32v7-0.1.2
+FROM 10.108.252.69:5000/balhau/rust:arm32v7-0.1.3
 
-LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.0.28"
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.0.29"
 
 RUN cd /opt; git clone https://github.com/Balhau/balhauapi.git
 
