@@ -11,7 +11,7 @@ configs:
     log: false
     env: prod
   database:
-    hostname: 10.100.70.141
+    hostname: 10.109.150.18
     schema: balhauapi
     port: 5432
     user: postgres
