@@ -1,2 +1,2 @@
-cd /opt/kafka-intro
+cd /opt/kafka-intro && git pull origin master
 npm install && npm start
