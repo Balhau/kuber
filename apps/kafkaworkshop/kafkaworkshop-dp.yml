@@ -23,3 +23,7 @@ spec:
           requests:
             memory: "128Mi"
             cpu: "800m"
+        ports:
+        - containerPort: 8000
+          name: registry
+          protocol: TCP
