@@ -4,6 +4,7 @@ MAINTAINER Balhau <balhau@balhau.net>
 
 RUN mkdir /opt
 RUN cd /opt/
+RUN apk update && apk upgrade && apk add git
 RUN git clone https://github.com/Balhau/kafka-intro.git
 
 
