@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kafkaworkshop-ingress
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - kafkaworkshop.balhau.net
+  rules:
+  - host: kafkaworkshop.balhau.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kafka-workshop
+          servicePort: 8000

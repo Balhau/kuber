@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: kafka-workshop
+  namespace: balhau-dev
+  labels:
+    version: 0.0.1
+    app: kafka-workshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-workshop
+  template:
+    metadata:
+      labels:
+        app: kafka-workshop
+    spec:
+      containers:
+      - name: kafka-workshop
+        image: 10.108.252.69:5000/balhau/kafka-workshop:armv6-0.0.1
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "800m"
