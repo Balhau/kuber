@@ -2,7 +2,7 @@ HOST = 10.108.252.69:5000
 NS = balhau
 APP = nodejs
 ARCH = armv6
-VERSION ?= 0.0.1
+VERSION ?= 0.0.2
 
 ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
 
