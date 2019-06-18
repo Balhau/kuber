@@ -9,7 +9,7 @@ RUN apt-get update; apt-get -y upgrade; apt-get install -y pkg-config libssl-dev
 RUN apt-get install -y youtube-dl
 
 # Runtime variables needed
-ENV DATABASE_URL postgres://postgres:postgres@10.100.70.141/balhauapi
+ENV DATABASE_URL postgres://postgres:postgres@10.109.150.18/balhauapi
 ENV CONFIG_FILE_ENV=/opt/config.yml
 
 ADD config.yml /opt/config.yml
