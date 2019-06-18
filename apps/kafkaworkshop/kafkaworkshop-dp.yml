@@ -4,7 +4,7 @@ metadata:
   name: kafka-workshop
   namespace: balhau-dev
   labels:
-    version: 0.0.1
+    version: 0.0.2
     app: kafka-workshop
 spec:
   replicas: 1
