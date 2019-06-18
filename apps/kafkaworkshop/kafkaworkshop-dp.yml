@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: kafka-workshop
-        image: 10.108.252.69:5000/balhau/kafka-workshop:armv6-0.0.1
+        image: 10.108.252.69:5000/balhau/kafka-workshop:armv6-0.0.2
         resources:
           requests:
             memory: "128Mi"
