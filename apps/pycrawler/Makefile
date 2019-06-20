@@ -2,7 +2,7 @@ HOST = 10.108.252.69:5000
 NS = balhau
 APP = pycrawler
 ARCH = armv6
-VERSION ?= 0.0.2
+VERSION ?= 0.0.3
 
 ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
 
