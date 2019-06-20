@@ -22,7 +22,7 @@ RUN mkdir /opt/; cd /opt/; git clone https://github.com/Balhau/pycrawl.git;
 
 ADD pycrawler.sh /opt/pycrawler.sh
 
-ADD configs/config.yml /opt/pycrawl/config.yml
+ADD configs/config.yaml /opt/pycrawl/config.yaml
 
 RUN chmod +x /opt/pycrawler.sh
 
