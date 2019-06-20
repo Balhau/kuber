@@ -4,7 +4,7 @@ metadata:
   name: port-scanner
   namespace: balhau-dev
   labels:
-    version: v5
+    version: armv6-0.0.2
     app: pycrawler
 spec:
   replicas: 3
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: pycrawler
-        image: 10.108.252.69:5000/balhau/pycrawler:v5
+        image: 10.108.252.69:5000/balhau/pycrawler:armv6-0.0.2
         #resources:
         #  limits:
         #    cpu: 500m
