@@ -4,19 +4,19 @@ metadata:
   name: pycrawler-scanner
   namespace: balhau-dev
   labels:
-    version: armv6-0.0.2
+    version: armv6-0.0.3
 spec:
   replicas: 3
   selector:
-    version: armv6-0.0.2
+    version: armv6-0.0.3
   template:
     metadata:
       labels:
-        version: armv6-0.0.2
+        version: armv6-0.0.3
     spec:
       containers:
       - name: pycrawler-scanner
-        image: 10.108.252.69:5000/balhau/pycrawler:armv6-0.0.2
+        image: 10.108.252.69:5000/balhau/pycrawler:armv6-0.0.3
         resources:
           limits:
             cpu: 100m
