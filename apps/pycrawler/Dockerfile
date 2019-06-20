@@ -18,6 +18,8 @@ RUN pip2 install pyyaml
 
 RUN pip2 install kafka-python
 
+RUN pip2 install ipwhois
+
 RUN mkdir /opt/; cd /opt/; git clone https://github.com/Balhau/pycrawl.git;
 
 ADD pycrawler.sh /opt/pycrawler.sh
