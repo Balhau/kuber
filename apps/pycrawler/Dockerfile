@@ -1,6 +1,6 @@
 FROM arm32v6/alpine
 
-MAINTAINER Balhau <balhau@balhau.net>
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="0.0.4"
 
 #Install git
 RUN apk update && apk upgrade && \
