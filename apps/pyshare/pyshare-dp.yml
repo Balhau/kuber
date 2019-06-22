@@ -4,7 +4,7 @@ metadata:
   name: pyshare
   namespace: balhau-dev
   labels:
-    version: armv6-0.0.1
+    version: armv6-0.0.2
     app: pyshare
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: pyshare
-        image: 10.108.252.69:5000/balhau/pyshare:armv6-0.0.1
+        image: 10.108.252.69:5000/balhau/pyshare:armv6-0.0.2
         ports:
         - containerPort: 8000
           name: registry
