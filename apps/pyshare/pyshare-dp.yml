@@ -4,10 +4,10 @@ metadata:
   name: pyshare
   namespace: balhau-dev
   labels:
-    version: armv6-0.0.4
+    version: armv6-0.0.1
     app: pyshare
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: pyshare
