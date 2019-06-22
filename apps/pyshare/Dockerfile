@@ -5,8 +5,6 @@ LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" versi
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
-RUN mkdir /opt/;
-
 ADD scripts/start-python-server.sh /opt/start-server.sh
 
 RUN chmod +x /opt/start-server.sh
