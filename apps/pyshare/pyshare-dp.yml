@@ -24,8 +24,8 @@ spec:
           name: registry
           protocol: TCP
         volumeMounts:
-          - name: codecorner-store
-            mountPath: /opt/ghost
+          - name: pyshare-store
+            mountPath: /opt/shared
       volumes:
       - name: pyshare-store
         persistentVolumeClaim:
