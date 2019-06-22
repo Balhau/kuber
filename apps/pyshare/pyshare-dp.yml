@@ -23,3 +23,10 @@ spec:
         - containerPort: 8000
           name: registry
           protocol: TCP
+        volumeMounts:
+          - name: codecorner-store
+            mountPath: /opt/ghost
+      volumes:
+      - name: pyshare-store
+        persistentVolumeClaim:
+          claimName: pyshare-pvc
