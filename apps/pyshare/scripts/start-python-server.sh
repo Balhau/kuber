@@ -1,0 +1,1 @@
+cd /opt/shared/ && python -m SimpleHTTPServer 8000
