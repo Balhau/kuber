@@ -1,6 +1,6 @@
 FROM 10.108.252.69:5000/balhau/rust:arm32v7-0.1.3
 
-LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.0.29"
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.0.30"
 
 RUN cd /opt; git clone https://github.com/Balhau/balhauapi.git
 
@@ -13,6 +13,8 @@ ENV DATABASE_URL postgres://postgres:postgres@10.109.150.18/balhauapi
 ENV CONFIG_FILE_ENV=/opt/config.yml
 
 ADD config.yml /opt/config.yml
+
+RUN rustup update
 
 #Remove the specific version as soon as ring lib is stable
 #RUN cd /opt/balhauapi/balhauapi; rustup install nightly-2017-12-21 && rustup override set nightly-2017-12-21; cargo install --root /opt; cargo clean

@@ -4,6 +4,7 @@ FROM  resin/raspberry-pi-alpine-node
 MAINTAINER Balhau <balhau@balhau.net>
 
 #RUN mkdir /opt
+RUN echo "CENAS"
 RUN cd /opt/
 RUN apk update && apk upgrade && apk add git
 #RUN apt-get update; apt-get upgrade; apt-get install git
