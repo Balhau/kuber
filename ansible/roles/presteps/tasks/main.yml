@@ -2,7 +2,13 @@
   shell: swapoff -a
 
 - name: Adding iptables rules
-  shell: iptables -A FORWARD -i cni0 -j ACCEPT; iptables -A FORWARD -o cni0 -j ACCEPT
+  shell: iptables -w -A FORWARD -i cni0 -j ACCEPT; iptables -w -A FORWARD -o cni0 -j ACCEPT
+  
+- name: Set sys config for bridge iptables
+  shell: sysctl net.bridge.bridge-nf-call-iptables=1
+
+- name: Set ipv4 ip forward true
+  shell: sysctl net.ipv4.ip_forward=1
 
 - name: System daemon reload
   shell: systemctl daemon-reload
