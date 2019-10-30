@@ -4,7 +4,7 @@ metadata:
   name: webpt-ws
   namespace: balhau-dev
   labels:
-    version: 0.0.2
+    version: 0.0.6
     app: webpt-ws
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: balhauapi
-        image: 10.108.252.69:5000/balhau/webpt:arm32v7-0.0.2
+        image: 10.108.252.69:5000/balhau/webpt:arm32v7-0.0.6
         resources:
           requests:
             memory: "128Mi"
