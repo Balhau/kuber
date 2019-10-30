@@ -1,0 +1,29 @@
+FROM arm32v7/alpine as ALPINE_BASE
+
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.1.4"
+
+# Maintainer
+MAINTAINER Balhau <balhau@balhau.net>
+
+RUN apk update && apk upgrade && apk add \
+  gcc musl-dev
+
+RUN apk add curl
+
+ENV RUSTUP_USE_HYPER 1
+
+#RUN curl --insecure https://sh.rustup.rs -sSf | sh -s -- -y
+#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+RUN curl https://sh.rustup.rs -sSf | sh
+
+# Setup nightly builds
+ENV HOME /root
+ENV PATH $HOME/.cargo/bin:$PATH
+
+#RUN rustup default nightly && rustup override set nightly
+
+# Update Rust and Cargo
+RUN rustup update
+
+# Entry point
+CMD "/usr/bin/bash"

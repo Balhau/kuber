@@ -2,7 +2,7 @@ HOST = 10.108.252.69:5000
 NS = balhau
 APP = java
 ARCH = arm32v7
-VERSION ?= 0.1
+VERSION ?= 1.0
 
 ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
 

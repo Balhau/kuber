@@ -1,6 +1,6 @@
 FROM arm32v7/debian
 
-LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.1.4"
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v7/armhf" version="0.1.5"
 
 # Maintainer
 MAINTAINER Balhau <balhau@balhau.net>
@@ -9,10 +9,10 @@ RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y curl build-essential git
 
-RUN touch /opt/rust_nigthtly_0.0.2
-
 # Install rust
-RUN curl --insecure https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y
+#RUN curl --insecure https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly -y
+#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Setup nightly builds
 ENV HOME /root
