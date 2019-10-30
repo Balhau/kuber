@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webpt-ingress
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - webpt.balhau.net
+  rules:
+  - host: webpt.balhau.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: webpt-ws
+          servicePort: 8085

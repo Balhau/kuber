@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webpt-ws
+  namespace: balhau-dev
+  labels:
+    version: 0.0.2
+    app: webpt-ws
+    
+spec:
+  selector:
+    app: webpt-ws
+  ports:
+    - protocol: TCP
+      port: 8085
