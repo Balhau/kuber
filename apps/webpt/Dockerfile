@@ -1,7 +1,7 @@
 FROM armv7/armhf-java8
 
 ENV WEBPT_HOME=/opt/webpt
-ENV WEB_PT_VERSION=1.0-20191030.210447-5
+ENV WEB_PT_VERSION=1.0-20191031.110324-6
 
 #Add certificates to java env
 ADD cacerts /usr/lib/jvm/java-8-oracle/jre/lib/security/

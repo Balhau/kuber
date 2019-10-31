@@ -1,0 +1,1 @@
+make; make push; kubectl apply -f webpt-svc.yml; kubectl apply -f webpt-dp.yml
