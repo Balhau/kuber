@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: transmission-ingress
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - transmission.balhau.net
+  rules:
+  - host: transmission.balhau.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: trans-svc
+          servicePort: 80
