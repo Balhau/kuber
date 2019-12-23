@@ -1,7 +1,7 @@
 - name: Kubernetes post setup configurations
   hosts: pis
   gather_facts: yes
-  remote_user: pi
+  remote_user: pirate
   become: true  
   vars_files:
     - config.yml

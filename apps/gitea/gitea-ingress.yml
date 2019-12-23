@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gitea-ingress
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - git.balhau.net
+  rules:
+  - host: git.balhau.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gitea
+          servicePort: 3000
