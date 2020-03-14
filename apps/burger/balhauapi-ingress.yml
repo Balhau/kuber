@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: balhauapi-ingress
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - burger-builder.balhau.net
+  rules:
+  - host: burger-builder.balhau.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: burger-builder
+          servicePort: 5000
