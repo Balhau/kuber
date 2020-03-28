@@ -1,5 +1,5 @@
 # base image
-FROM node:12.2.0-alpine
+FROM node:12.2.0-alpine as builder
 
 # set working directory
 WORKDIR /app
@@ -9,7 +9,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 RUN apk add git
 
-RUN echo "1"
 RUN git clone https://github.com/Balhau/react-demo /app
 
 # install and cache app dependencies
@@ -17,9 +16,16 @@ RUN git clone https://github.com/Balhau/react-demo /app
 RUN npm install
 RUN yarn build
 
+
+FROM node:12.2.0-alpine
+
+copy --from=builder /app/build /app
+
+WORKDIR /app
+
 #Add server
 RUN yarn global add serve
 
 # start app
-CMD ["serve", "-s", "build"]
-#CMD ["tail", "-f", "/app/README.md"]
+CMD ["serve", "-s", "/app"]
+

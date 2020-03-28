@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bb-beauty
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - www.bbbeauty.eu
+  rules:
+  - host: www.bbbeauty.eu
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: bb-beauty
+          servicePort: 8000

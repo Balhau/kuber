@@ -1,8 +1,8 @@
 FROM arm32v6/alpine
 
-LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="1.0.1"
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="1.1.0"
 
-ARG NODE_VER=12.4.0
+ARG NODE_VER=12.16.1
 ARG NPM_VER=latest
 
 RUN apk -U add curl git make gcc g++ python linux-headers paxctl libgcc libstdc++ binutils-gold ca-certificates \
