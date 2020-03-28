@@ -57,9 +57,7 @@ ENV GITEA_CUSTOM /data/gitea
 
 VOLUME ["/data"]
 
-#COPY docker/root /
 COPY --from=build-env /go/src/code.gitea.io/gitea/gitea /app/gitea/gitea
 RUN ln -s /app/gitea/gitea /usr/local/bin/gitea
 
 ENTRYPOINT ["/app/gitea/gitea"]
-#CMD ["/bin/s6-svscan", "/etc/s6"]
