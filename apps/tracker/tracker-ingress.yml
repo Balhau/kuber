@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bt-tracker-ingress
+  namespace: balhau-dev
+spec:
+  tls:
+  - hosts:
+    - tracker.balhau.net
+  rules:
+  - host: tracker.balhau.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: bt-tracker
+          servicePort: 8000

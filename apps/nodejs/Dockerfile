@@ -5,6 +5,7 @@ LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" versi
 ARG NODE_VER=12.16.1
 ARG NPM_VER=latest
 
+RUN apk update && apk upgrade
 RUN apk -U add curl git make gcc g++ python linux-headers paxctl libgcc libstdc++ binutils-gold ca-certificates \
  && cd /tmp \
  && curl --silent --ssl https://nodejs.org/dist/v$NODE_VER/node-v$NODE_VER.tar.gz | tar zxf - \

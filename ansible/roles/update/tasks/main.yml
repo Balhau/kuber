@@ -16,14 +16,14 @@
    state: mounted
   become: true # as root
 
-- name: Mount BalhauWD samba share
-  mount: 
-   fstype: cifs
-   src: //192.168.1.100/BalhauWD
-   opts: "rw,guest"
-   name: /media/balhauwd
-   state: mounted
-  become: true
+# - name: Mount BalhauWD samba share
+#   mount: 
+#    fstype: cifs
+#    src: //192.168.1.100/BalhauWD
+#    opts: "rw,guest"
+#    name: /media/balhauwd
+#    state: mounted
+#   become: true
 
 - name: Reboot
   shell: sleep 2 && reboot
