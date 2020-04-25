@@ -30,8 +30,9 @@
 
 
 # Add cert manager for automatic managing of certificates
-- name: Install cert manager
-  shell: kubectl apply -f files/cert-manager/cert-manager.yaml
+# Currently not working wait until a stable version
+#- name: Install cert manager
+#  shell: kubectl apply -f files/cert-manager/cert-manager.yaml
 
 #Assign node to traefik
 - name: Assign node
