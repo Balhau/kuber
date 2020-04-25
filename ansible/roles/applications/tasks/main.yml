@@ -28,6 +28,11 @@
 - name: Install Kubernetes Dashboard
   shell: curl -sSL 'https://raw.githubusercontent.com/kubernetes/dashboard/v1.6.3/src/deploy/kubernetes-dashboard.yaml' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
 
+
+# Add cert manager for automatic managing of certificates
+- name: Install cert manager
+  shell: kubectl apply -f files/cert-manager/cert-manager.yaml
+
 #Assign node to traefik
 - name: Assign node
   shell: kubectl label node {{traefik_node}} nginx-controller=traefik
