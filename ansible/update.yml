@@ -1,7 +1,6 @@
 - name: Update HypriotOS and Kubernetes components
-  hosts: pis
+  hosts: k8s
   gather_facts: yes
-  remote_user: pirate
   become: true
   become_method: sudo
   vars_files:
@@ -10,3 +9,4 @@
   roles:
   - presteps
   - update
+  - poststeps

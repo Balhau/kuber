@@ -1,0 +1,10 @@
+- name: Update non k8s nodes
+  hosts: nonk8s
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  vars_files:
+    - config.yml
+
+  roles:
+  - update

@@ -4,9 +4,6 @@
 - name: Upgrade APT package
   command: apt-get upgrade -y
 
-- name: Fix Kubelet version
-  command: apt-get install kubelet=1.16.2-00 -y --force-yes
-
 - name: Add NFS mountpoint
   mount:
    name: /media/wd5t
@@ -24,11 +21,3 @@
 #    name: /media/balhauwd
 #    state: mounted
 #   become: true
-
-- name: Reboot
-  shell: sleep 2 && reboot
-  async: 1
-  poll: 0
-  ignore_errors: true
-  tags:
-    - reboot

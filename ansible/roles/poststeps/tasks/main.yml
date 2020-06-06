@@ -1,0 +1,13 @@
+- name: Fix Kubelet version
+  command: apt-get install kubelet=1.16.2-00 -y --force-yes
+  tags:
+    - kubelet
+
+
+- name: Reboot
+  shell: sleep 2 && reboot
+  async: 1
+  poll: 0
+  ignore_errors: true
+  tags:
+    - reboot
