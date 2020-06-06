@@ -1,5 +1,5 @@
 - name: Update non k8s nodes
-  hosts: nonk8s
+  hosts: laps
   gather_facts: yes
   become: true
   become_method: sudo
