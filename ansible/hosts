@@ -1,9 +1,33 @@
-[pis]
-rasp5 name=rasp5 ansible_ssh_host=192.168.1.15
-rasp4 name=rasp4 ansible_ssh_host=192.168.1.14
-rasp3 name=rasp3 ansible_ssh_host=192.168.1.13
-rasp2 name=rasp2 ansible_ssh_host=192.168.1.12
-rasp1 name=rasp1 ansible_ssh_host=192.168.1.11
+[k8s]
+rasp5 name=rasp5 ansible_ssh_host='{{ rasp5_host }}' ansible_user='{{ rasp_k8s_user }}'
+rasp4 name=rasp4 ansible_ssh_host='{{ rasp4_host }}' ansible_user='{{ rasp_k8s_user }}'
+rasp3 name=rasp3 ansible_ssh_host='{{ rasp3_host }}' ansible_user='{{ rasp_k8s_user }}'
+rasp2 name=rasp2 ansible_ssh_host='{{ rasp2_host }}' ansible_user='{{ rasp_k8s_user }}'
+rasp1 name=rasp1 ansible_ssh_host='{{ rasp1_host }}' ansible_user='{{ rasp_k8s_user }}'
+
+[pis2]
+rasp-2 name=rasp-2  ansible_ssh_host='{{ rasp_2_host }}' ansible_user='{{ rasp_2_user }}'
+rasp-1 name=rasp-1  ansible_ssh_host='{{ rasp_1_host }}' ansible_user='{{ rasp_1_user }}' ansible_port='{{ rasp_1_port }}'
+
+[laps]
+barby  name=barby-Latitude-E6520     ansible_ssh_host='{{ barby_host }}'  ansible_user='{{ barby_user }}' ansible_become_pass='{{ barby_sudo_pass }}'
+balhau name=balhoto                  ansible_ssh_host='{{ balhau_host }}' ansible_user='{{ balhau_user }}' ansible_become_pass='{{ balhau_sudo_pass }}'
+
+[nonk8s]
+rasp-1
+rasp-2
+balhau
+barby
+
+[all]
+rasp1
+rasp2
+rasp3
+rasp5
+rasp-1
+rasp-2
+barby
+balhau
 
 [master]
 rasp5
