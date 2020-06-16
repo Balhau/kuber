@@ -1,6 +1,6 @@
 
 - name: Reset Kubernetes installation
-  shell: "kubeadm reset"
+  shell: "kubeadm reset -f"
   when: "reset==true"
   tags: [init]
 
