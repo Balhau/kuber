@@ -40,15 +40,15 @@ To overcome the problem of local overuse of io operations on the sd cards as wel
 
 After some reading I notice a nice [article](https://linuxconfig.org/how-to-move-docker-s-default-var-lib-docker-to-another-directory-on-ubuntu-debian-linux) target for debian distributions that explained how we could do the trick of migrating the docker container filesystem into a new folder. This was the base for the [**mountpoints.yml**](ansible/roles/base/tasks/mountpoints.yml) playbook that is responsible for the following:
 
-    * Turn off swap
-    * Install NFS client and RSync utilities
-    * Setup the remote NFS shared folder as a local mountpoint
-    * Set a node root folder on the shared folder
-    * Set docker to use the new shared mountpoint as working folder
-    * Stop docker service
-    * Execute daemon-reload
-    * RSync data from old to new folder
-    * Start docker service
+* Turn off swap
+* Install NFS client and RSync utilities
+* Setup the remote NFS shared folder as a local mountpoint
+* Set a node root folder on the shared folder
+* Set docker to use the new shared mountpoint as working folder
+* Stop docker service
+* Execute daemon-reload
+* RSync data from old to new folder
+* Start docker service
 
 
  ### The reality 
@@ -66,6 +66,7 @@ After some reading I notice a nice [article](https://linuxconfig.org/how-to-move
 
 Build and push image into registry
 
+```shell
     docker build -t image-name:tag-name .
     docker tag image-name:tag-name localhost:5000/image-name:tag-name
     docker push localhost:5000/image-name:tag-name
@@ -77,7 +78,7 @@ To get image information on the registry you can query the following endpoint
 For instance in our current setup we end up with the following output
 
     {"repositories":["balhau/pycrawler","kube-api","pycrawler"]}
-
+```
 
  ### More info
 
