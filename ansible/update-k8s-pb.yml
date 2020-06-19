@@ -1,0 +1,12 @@
+- name: Update HypriotOS and Kubernetes components
+  hosts: k8s
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  vars_files:
+    - config.yml
+
+  roles:
+  - presteps
+  - update
+  - poststeps

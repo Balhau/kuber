@@ -1,0 +1,11 @@
+- name: Kubernetes post setup configurations
+  hosts: pis
+  gather_facts: yes
+  remote_user: pirate
+  become: true  
+  vars_files:
+    - config.yml
+  
+  roles:
+  - presteps
+  - applications
