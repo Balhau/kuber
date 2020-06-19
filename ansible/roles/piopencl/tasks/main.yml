@@ -1,0 +1,23 @@
+- name: Install Packages opencl packages for raspberry
+  apt:
+    name: "{{ item }}"
+    force: yes
+    state: present
+  with_items:
+    - cmake
+    - git
+    - ocl-icd-opencl-dev
+    - ocl-icd-dev
+    - opencl-headers
+    - clinfo
+    - libraspberrypi-dev
+    - clang
+    - clang-format
+    - clang-tidy
+
+    - name: Create opencl workingdir
+    file:
+      path: {{ opencl_work_dir }}
+      state: directory
+      mode: '0755'
+  

@@ -1,0 +1,10 @@
+- name: Install opencl in k8s nodes
+  hosts: k8s
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  vars_files:
+    - config.yml
+
+  roles:
+  - piopencl
