@@ -1,7 +1,8 @@
 FROM arm32v6/alpine
 
-LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="0.0.6"
+LABEL maintainer "Balhau <balhau@balhau.net>" architecture="ARM32v6/armhf" version="0.0.7"
 
+RUN apk update; apk update
 RUN apk -U add curl git make gcc g++ linux-headers
 
 RUN wget http://download.redis.io/redis-stable.tar.gz\

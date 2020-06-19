@@ -91,6 +91,16 @@ The code in this repository has several blog posts helping the rationale behind
 * [Kubernets and PIs](https://codecorner.balhau.net/kubernets-and-raspberry-pis/) - Where kubernets is put under historical perspective and the raspberry pi as the selected architecture for the cluster is justified
 * [Provisioning PIs with Ansible](https://codecorner.balhau.net/provisioning-pis-with-ansible/) - A first technical overview about the process of provisioning automation done in ansible to setup the raspberry pi kubernetes cluster
 
+#### Create a token for dashboard
+
+```shell
+    kubectl apply -f user.yml
+    kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+```
+
+
+
+
 
 #### Helm init command
 

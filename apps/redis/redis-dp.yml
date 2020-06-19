@@ -4,7 +4,7 @@ metadata:
   name: redis
   namespace: balhau-dev
   labels:
-    version: 0.0.2
+    version: 0.0.7
     app: redis
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: 10.108.252.69:5000/balhau/redis:armv6-0.0.6
+        image: 10.108.252.69:5000/balhau/redis:armv6-0.0.7
         resources:
           requests:
             memory: "128Mi"
