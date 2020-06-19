@@ -15,9 +15,25 @@
     - clang-format
     - clang-tidy
 
-    - name: Create opencl workingdir
-    file:
-      path: {{ opencl_work_dir }}
-      state: directory
-      mode: '0755'
-  
+- name: Create opencl working dir
+  file:
+    path: "{{ opencl_work_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Clone VC4CL repos into open cl working dir
+  shell: cd {{ opencl_work_dir }}; git clone https://github.com/doe300/VC4CLStdLib.git; git clone https://github.com/doe300/VC4CL.git; git clone https://github.com/doe300/VC4C.git
+
+- name: Build and install VC4CLStdLib
+  shell:  cd {{ opencl_work_dir }}/VC4CLStdLib; mkdir build; cd build; cmake ..; make; make install; ldconfig
+
+- name: Build and install VC4C
+  shell: cd {{ opencl_work_dir }}/VC4C; mkdir build; cd build; cmake ..; make; make install; ldconfig
+
+- name: Build and install VC4CL
+  shell: cd {{ opencl_work_dir }}/VC4CL; mkdir build; cd build; cmake ..; make; make install; ldconfig
+
+- name: Test OpenCL with clinfo command
+  shell: clinfo
+
+- debug: var=out.stdout_lines
