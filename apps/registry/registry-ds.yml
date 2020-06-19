@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: kube-registry-proxy
@@ -8,13 +8,13 @@ metadata:
     kubernetes.io/cluster-service: "true"
     version: v0.3
 spec:
+  selector:
+    matchLabels:
+      name: kube-registry-proxy
   template:
     metadata:
       labels:
-        k8s-app: kube-registry-proxy
-        kubernetes.io/name: "kube-registry-proxy"
-        kubernetes.io/cluster-service: "true"
-        version: v0.3
+        name: kube-registry-proxy
     spec:
       containers:
       - name: kube-registry-proxy
