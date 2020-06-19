@@ -16,6 +16,7 @@ Kubernetes is a well supported toolkit to manage the lifecycle of container appl
 ## The setup
 
 ### The first version
+
 First and foremost let me say this a working in progress. Now we are clarified lets put all this in context.
 So, the initial idea consisted in deploying a kubernetes cluster running on a set of 5 Raspberry Pi model 3
 as we can see in the following picture
@@ -52,11 +53,10 @@ After some reading I notice a nice [article](https://linuxconfig.org/how-to-move
 
 
  ### The reality 
+
  This was a very promising idea however after some trying to start docker daemon we noticed that the overlay2 filesystem was not correcting mounting the containers when NFS was used as the backing filesystem. After some reading we end up with the sad news that [overlay backing file system list didn't include NFS](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#prerequisites).
 
  So instead of completely discard the NFS solution as a way of scaling the storage space and as a practical way to overcome the fact that raspberry pies have a limited number of write flash operations we start looking for other ways to solve the issue. One way was already embedded in the kubernetes arquitectures [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-
-
 
  ### Private Docker Registry
 
