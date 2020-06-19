@@ -49,7 +49,8 @@ After some reading I notice a nice [article](https://linuxconfig.org/how-to-move
     * Execute daemon-reload
     * RSync data from old to new folder
     * Start docker service
- 
+
+
  ### The reality 
  This was a very promising idea however after some trying to start docker daemon we noticed that the overlay2 filesystem was not correcting mounting the containers when NFS was used as the backing filesystem. After some reading we end up with the sad news that [overlay backing file system list didn't include NFS](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#prerequisites).
 
@@ -76,6 +77,7 @@ To get image information on the registry you can query the following endpoint
 For instance in our current setup we end up with the following output
 
     {"repositories":["balhau/pycrawler","kube-api","pycrawler"]}
+
 
  ### More info
 
