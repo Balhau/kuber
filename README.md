@@ -11,11 +11,12 @@ The reason for Raspberry as the bare metal solution is pretty obvious. Its **che
 
 ### Why Kubernetes
 
-Kubernetes is a well suported toolkit to manage the lifecycle of container applications and give us a very interesting set of features to deploy, update and scale our containers. Since it was developed by google has a very active developer community, so that's pretty much it.
+Kubernetes is a well supported toolkit to manage the lifecycle of container applications and give us a very interesting set of features to deploy, update and scale our containers. Since it was developed by google has a very active developer community, so that's pretty much it.
 
 ## The setup
 
 ### The first version
+
 First and foremost let me say this a working in progress. Now we are clarified lets put all this in context.
 So, the initial idea consisted in deploying a kubernetes cluster running on a set of 5 Raspberry Pi model 3
 as we can see in the following picture
@@ -40,31 +41,32 @@ To overcome the problem of local overuse of io operations on the sd cards as wel
 
 After some reading I notice a nice [article](https://linuxconfig.org/how-to-move-docker-s-default-var-lib-docker-to-another-directory-on-ubuntu-debian-linux) target for debian distributions that explained how we could do the trick of migrating the docker container filesystem into a new folder. This was the base for the [**mountpoints.yml**](ansible/roles/base/tasks/mountpoints.yml) playbook that is responsible for the following:
 
-    * Turn off swap
-    * Install NFS client and RSync utilities
-    * Setup the remote NFS shared folder as a local mountpoint
-    * Set a node root folder on the shared folder
-    * Set docker to use the new shared mountpoint as working folder
-    * Stop docker service
-    * Execute daemon-reload
-    * RSync data from old to new folder
-    * Start docker service
- 
+* Turn off swap
+* Install NFS client and RSync utilities
+* Setup the remote NFS shared folder as a local mountpoint
+* Set a node root folder on the shared folder
+* Set docker to use the new shared mountpoint as working folder
+* Stop docker service
+* Execute daemon-reload
+* RSync data from old to new folder
+* Start docker service
+
+
  ### The reality 
+
  This was a very promising idea however after some trying to start docker daemon we noticed that the overlay2 filesystem was not correcting mounting the containers when NFS was used as the backing filesystem. After some reading we end up with the sad news that [overlay backing file system list didn't include NFS](https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/#prerequisites).
 
- So instead of completely discard the NFS solution as a way of scaling the storage space and as a pratical way to overcome the fact that raspberry pies have a limited number of write flash operations we start looking for other ways to solve the issue. One way was already embeded in the kubernetes arquitectures [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-
-
+ So instead of completely discard the NFS solution as a way of scaling the storage space and as a practical way to overcome the fact that raspberry pies have a limited number of write flash operations we start looking for other ways to solve the issue. One way was already embedded in the kubernetes arquitectures [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 
  ### Private Docker Registry
 
  To install a private docker registry you just need to follow [these instructions](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/registry)
 
-[Here we adapted](kuber/kuber/registry) the kuberfiles to enable a local volume using a NFS shared mountpoint.
+[Here we adapted](kuber/kuber/registry) the kuber files to enable a local volume using a NFS shared mount point.
 
 Build and push image into registry
 
+```shell
     docker build -t image-name:tag-name .
     docker tag image-name:tag-name localhost:5000/image-name:tag-name
     docker push localhost:5000/image-name:tag-name
@@ -76,6 +78,7 @@ To get image information on the registry you can query the following endpoint
 For instance in our current setup we end up with the following output
 
     {"repositories":["balhau/pycrawler","kube-api","pycrawler"]}
+```
 
  ### More info
 
@@ -88,8 +91,18 @@ For instance in our current setup we end up with the following output
 
 The code in this repository has several blog posts helping the rationale behind
 
-* [Kubernets and PIs](https://codecorner.balhau.net/kubernets-and-raspberry-pis/) - Where kubernets is put under historical perspective and the raspberry pi as the selected arquitecture for the cluster is justified
-* [Provisioning PIs with Ansible](https://codecorner.balhau.net/provisioning-pis-with-ansible/) - A first technical overview about the process of provisioning automation done in ansible to setup the raspberry pi kubernets cluster
+* [Kubernets and PIs](https://codecorner.balhau.net/kubernets-and-raspberry-pis/) - Where kubernets is put under historical perspective and the raspberry pi as the selected architecture for the cluster is justified
+* [Provisioning PIs with Ansible](https://codecorner.balhau.net/provisioning-pis-with-ansible/) - A first technical overview about the process of provisioning automation done in ansible to setup the raspberry pi kubernetes cluster
+
+#### Create a token for dashboard
+
+```shell
+    kubectl apply -f user.yml
+    kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+```
+
+
+
 
 
 #### Helm init command

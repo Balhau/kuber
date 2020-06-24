@@ -1,0 +1,10 @@
+- name: Update all linux hosts
+  hosts: all
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  vars_files:
+    - config.yml
+
+  roles:
+  - update

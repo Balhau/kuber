@@ -1,7 +1,7 @@
 # You timezone
 timezone: "Europe/Lisbon"
 arch: arm
-token: 506f2b.1a51ab3d42ed9d10
+token: mupsfa.nxsq06a5u801s5bl
 traefik_node: rasp1
 shared_folder: /media/wd5t
 shared_folder_pattern: \/media\/wd5t
@@ -10,4 +10,6 @@ advertise_master: 0.0.0.0
 docker_registry: 10.108.252.69:5000
 cidr: 10.244.0.0/16
 reset: true
+shacert: sha256:5c04944309a15bc3cc79d551e8e41c129973f5c54549f83b3c120f0a53163b2c
 nocows: 0
+opencl_work_dir: /tmp/opencl

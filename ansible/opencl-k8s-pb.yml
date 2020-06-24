@@ -1,5 +1,5 @@
-- name: Update non k8s nodes
-  hosts: nonk8s
+- name: Install OpenCL in k8s nodes
+  hosts: k8s
   gather_facts: yes
   become: true
   become_method: sudo
@@ -7,4 +7,4 @@
     - config.yml
 
   roles:
-  - update
+  - piopencl

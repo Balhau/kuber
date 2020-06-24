@@ -8,4 +8,4 @@
   
   roles:
   - presteps
-  #- applications
+  - applications
