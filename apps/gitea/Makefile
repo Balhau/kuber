@@ -2,7 +2,7 @@ HOST = 10.108.252.69:5000
 NS = balhau
 APP = gitea
 ARCH = armv6
-VERSION ?= 1.12.1
+VERSION ?= v1.12.1
 
 ARTIFACT=$(HOST)/$(NS)/$(APP):$(ARCH)-$(VERSION)
 

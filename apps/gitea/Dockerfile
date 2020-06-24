@@ -9,13 +9,21 @@ ARG GITEA_VERSION
 ARG TAGS="sqlite sqlite_unlock_notify"
 ENV TAGS "bindata $TAGS"
 ARG CGO_EXTRA_CFLAGS
+ENV GITEA_VERSION ${GITEA_VERSION:-v1.12.1}
+
+RUN echo "GITEA_VERSION: ${GITEA_VERSION}"
 
 #Build deps
 RUN apk --no-cache add build-base git nodejs npm
 
+#Clone repo
+
+RUN git clone https://github.com/go-gitea/gitea.git ${GOPATH}/src/code.gitea.io/gitea
+
 #Setup repo
-COPY . ${GOPATH}/src/code.gitea.io/gitea
+#COPY . ${GOPATH}/src/code.gitea.io/gitea
 WORKDIR ${GOPATH}/src/code.gitea.io/gitea
+
 
 #Checkout version if set
 RUN if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
