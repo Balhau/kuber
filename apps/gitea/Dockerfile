@@ -18,16 +18,17 @@ RUN apk --no-cache add build-base git nodejs npm
 
 #Clone repo
 
-RUN git clone https://github.com/go-gitea/gitea.git ${GOPATH}/src/code.gitea.io/gitea
+RUN git clone https://github.com/go-gitea/gitea.git ${GOPATH}/src/gitea
 
 #Setup repo
 #COPY . ${GOPATH}/src/code.gitea.io/gitea
-WORKDIR ${GOPATH}/src/code.gitea.io/gitea
+WORKDIR ${GOPATH}/src/gitea
 
 
 #Checkout version if set
-RUN if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
- && make clean-all build
+#RUN if [ -n "${GITEA_VERSION}" ]; then git checkout "${GITEA_VERSION}"; fi \
+# && npm audit fix && make clean-all build
+RUN make clean-all build
 
 FROM alpine:3.12
 LABEL maintainer="balhau@balhau.net"
