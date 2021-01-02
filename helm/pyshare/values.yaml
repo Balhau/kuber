@@ -43,17 +43,18 @@ service:
   livenessProbe: 
     path: /
     port: http
-    initialDelaySeconds: 120
+    initialDelaySeconds: 15
   readinessProbe:
     path: /
     port: http
-    initialDelaySeconds: 120
+    initialDelaySeconds: 15
 
 pvc:
   storage: 10Gi
   nfs:
     server: 192.168.1.170
     path: /media/wd/shared
+  mountPath: /opt/shared
 
 ingress:
   enabled: true
