@@ -1,0 +1,7 @@
+- name: Create cert-manager namespace
+  shell: kubectl apply -f files/cert-manager/cert-manager-namespace.yaml
+  ignore_errors: True
+- name: Install cert-manager
+  shell: kubectl create -f files/cert-manager/cert-manager-arm.yaml
+- name: Install letscrypt provider
+  shell: kubectl apply -f files/cert-manager/letscrypt.yaml

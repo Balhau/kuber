@@ -1,11 +1,10 @@
-- name: Kubernetes post setup configurations
+- name: Kubernetes master configuration
   hosts: master
   gather_facts: yes
   remote_user: pirate
-  become: true  
+  become: true
   vars_files:
     - config.yml
-  
+
   roles:
-  - presteps
-  - applications
+  - cert-manager

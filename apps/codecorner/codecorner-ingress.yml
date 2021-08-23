@@ -3,10 +3,14 @@ kind: Ingress
 metadata:
   name: codecorner-blog-ingress
   namespace: balhau-dev
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
-  - hosts:
-    - codecorner.balhau.net
+    - secretName: codecorner-blog-certificate
+      hosts:
+        - codecorner.balhau.net
   rules:
   - host: codecorner.balhau.net
     http:
