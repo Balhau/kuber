@@ -3,10 +3,14 @@ kind: Ingress
 metadata:
   name: gitea-ingress
   namespace: balhau-dev
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
-  - hosts:
-    - git.balhau.net
+    - secretName: gitea-certificate
+      hosts:
+        - git.balhau.net
   rules:
   - host: git.balhau.net
     http:

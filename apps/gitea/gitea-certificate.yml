@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: gitea
+  namespace: balhau-dev
+spec:
+  secretName: gitea-certificate
+  issuerRef:
+    name: letsencrypt
+  dnsNames:
+  - git.balhau.net
