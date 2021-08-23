@@ -23,7 +23,7 @@ spec:
         {{- range .hosts }}
         - {{ . | quote }}
         {{- end }}
-      secretName: {{ .secretName }}
+      secretName: {{ $fullName }}-certificate
     {{- end }}
   {{- end }}
   rules:

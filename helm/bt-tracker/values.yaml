@@ -47,20 +47,27 @@ service:
     path: /
     port: http
 
+certificate:
+  secretName: tracker-certificate
+  issuerRef: 
+    name: letsencrypt
+  dnsNames:
+    - codecorner.balhau.net
+
 ingress:
   enabled: true
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations: 
+      kubernetes.io/ingress.class: traefik
+      cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: tracker.balhau.net
       paths: [
         path: "/"
       ]
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls: 
+    - secretName: tracker-certificate
+      hosts:
+        - tracker.balhau.net
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
