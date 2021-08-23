@@ -47,20 +47,27 @@ service:
     path: /
     port: http
 
+certificate:
+  secretName: kafka-workshop-certificate
+  issuerRef: 
+    name: letsencrypt
+  dnsNames:
+    - kafkaworkshop.balhau.net
+
 ingress:
   enabled: true
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations: 
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: kafkaworkshop.balhau.net
       paths: [
         path: "/"
       ]
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls: 
+    - secretName: kafkaworkshop-certificate
+      hosts:
+        - kafkaworkshop.balhau.net
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
