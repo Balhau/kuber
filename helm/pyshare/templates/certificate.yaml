@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: {{ include "pyshare.fullname" . }}
+  labels:
+    {{- include "pyshare.labels" . | nindent 4 }}
+spec:
+  secretName: {{ include "pyshare.fullname" . }}-certificate
+  issuerRef:
+    name: {{ .Values.certificate.issuerRef.name }}
+  dnsNames:
+  {{- range .Values.certificate.dnsNames }}
+    - {{ . }}
+  {{- end }}
