@@ -1,0 +1,10 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ include "verdaccio.fullname" . }}
+  labels:
+    {{- include "verdaccio.labels" . | nindent 4 }}
+spec:
+  spec: {{- with .Values.pv}}
+    {{- toYaml . | nindent 8 }}
+  {{- end}}
