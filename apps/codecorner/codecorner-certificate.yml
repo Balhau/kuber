@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: codecorner-blog
+  namespace: balhau-dev
+spec:
+  secretName: codecorner-blog-certificate
+  issuerRef:
+    name: letsencrypt
+  dnsNames:
+  - codecorner.balhau.net

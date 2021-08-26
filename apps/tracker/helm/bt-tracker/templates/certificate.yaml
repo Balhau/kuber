@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: {{ include "bt-tracker.fullname" . }}
+  labels:
+    {{- include "bt-tracker.labels" . | nindent 4 }}
+spec:
+  secretName: {{ include "bt-tracker.fullname" . }}-certificate
+  issuerRef:
+    name: {{ .Values.certificate.issuerRef.name }}
+  dnsNames:
+  {{- range .Values.certificate.dnsNames }}
+    - {{ . }}
+  {{- end }}

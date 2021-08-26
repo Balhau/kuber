@@ -4,8 +4,8 @@
 - name: Enable flannel
   shell: /sbin/iptables -I FORWARD 1 -i cni0 -j ACCEPT -m comment --comment "flannel subnet"
 
-#- name: Adding iptables rules
-#  shell: iptables -w -A FORWARD -i cni0 -j ACCEPT; iptables -w -A FORWARD -o cni0 -j ACCEPT
+- name: Adding iptables rules
+  shell: /sbin/iptables -w -A FORWARD -i cni0 -j ACCEPT; iptables -w -A FORWARD -o cni0 -j ACCEPT
   
 - name: Set sys config for bridge iptables
   shell: sysctl net.bridge.bridge-nf-call-iptables=1

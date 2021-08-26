@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1alpha2  
+kind: ClusterIssuer  
+metadata:  
+  name: letsencrypt-prod
+spec:  
+  acme:
+    email: balhau@balhau.net
+    privateKeySecretRef:
+      name: prod-issuer-account-key
+    server: https://acme-v02.api.letsencrypt.org/directory
+    http01: {}
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
+        selector: {}

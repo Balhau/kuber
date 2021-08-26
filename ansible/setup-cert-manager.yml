@@ -1,0 +1,10 @@
+- name: Kubernetes master configuration
+  hosts: master
+  gather_facts: yes
+  remote_user: pirate
+  become: true
+  vars_files:
+    - config.yml
+
+  roles:
+  - cert-manager

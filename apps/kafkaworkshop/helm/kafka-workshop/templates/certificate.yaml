@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: {{ include "kafka-workshop.fullname" . }}
+  labels:
+    {{- include "kafka-workshop.labels" . | nindent 4 }}
+spec:
+  secretName: {{ include "kafka-workshop.fullname" . }}-certificate
+  issuerRef:
+    name: {{ .Values.certificate.issuerRef.name }}
+  dnsNames:
+  {{- range .Values.certificate.dnsNames }}
+    - {{ . }}
+  {{- end }}

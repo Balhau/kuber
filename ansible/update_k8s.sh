@@ -1,0 +1,1 @@
+ansible-playbook  --skip-tags reboot -i hosts -e @secrets.yml update-k8s-pb.yml --ask-vault-pass

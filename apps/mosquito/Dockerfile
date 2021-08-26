@@ -10,7 +10,7 @@ RUN mkdir config
 
 ADD config /config/
 
-RUN mkdir /opt
+RUN mkdir -p /opt
 
 ADD start-mosquitto.sh /opt/
 

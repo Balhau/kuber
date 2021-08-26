@@ -4,6 +4,9 @@
 - name: Upgrade APT package
   command: apt-get upgrade -y
 
+#- name: Downgrade kubernetes
+#  command: apt-get install -y --allow-downgrades kubelet=1.17.6-00 kubectl=1.17.6-00 kubeadm=1.17.6-00
+
 - name: Add NFS mountpoint
   mount:
    name: /media/wd5t
@@ -13,11 +16,11 @@
    state: mounted
   become: true # as root
 
-# - name: Mount BalhauWD samba share
-#   mount: 
-#    fstype: cifs
-#    src: //192.168.1.100/BalhauWD
-#    opts: "rw,guest"
-#    name: /media/balhauwd
-#    state: mounted
-#   become: true
+- name: Mount BalhauWD samba share
+  mount: 
+  fstype: cifs
+  src: //192.168.1.39/BalhauWD
+  opts: "rw,guest"
+  name: /media/balhauwd
+  state: mounted
+  become: true

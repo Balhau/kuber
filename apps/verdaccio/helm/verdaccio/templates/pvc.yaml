@@ -1,0 +1,9 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "verdaccio.fullname" . }}
+  labels:
+    {{- include "verdaccio.labels" . | nindent 4 }}
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: {{ include "verdaccio.fullname" . }}
