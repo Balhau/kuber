@@ -102,9 +102,6 @@ The code in this repository has several blog posts helping the rationale behind
 ```
 
 
-
-
-
 #### Helm init command
 
 ```shell
