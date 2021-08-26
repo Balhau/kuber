@@ -100,10 +100,3 @@ The code in this repository has several blog posts helping the rationale behind
     kubectl apply -f user.yml
     kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
 ```
-
-
-#### Helm init command
-
-```shell
-    helm init --service-account tiller --tiller-namespace kube-system --tiller-image=jessestuart/tiller
-```
